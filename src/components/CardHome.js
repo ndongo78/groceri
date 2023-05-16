@@ -8,16 +8,18 @@ import {
   Pressable,
   Image,
 } from "react-native";
-import React, { useState, useRef, useEffect } from "react";
+import React, {useState, useRef, useEffect, useContext} from "react";
 import tw from "twrnc";
 import { useNavigation, useRoute } from "@react-navigation/native";
 import Icon from "react-native-vector-icons/Ionicons";
+import {cartContext} from "../context/CartProvider";
 
 export const CardHome = ({ item, index, scrollX }) => {
   const navigation = useNavigation();
   const inputRange = [1, 5];
   const outputRange = [1, 0.8];
-
+  const [isClicked, setIsClicked] = useState(true);
+  const {addCart} = useContext(cartContext);
   const fadeAnim = useRef(new Animated.Value(0)).current;
   const scalRef = useRef(new Animated.Value(0)).current;
   const scale = fadeAnim.interpolate({ inputRange, outputRange });
@@ -37,7 +39,7 @@ export const CardHome = ({ item, index, scrollX }) => {
   return (
     <Animated.View
       style={[
-        tw`bg-[#e9f7ef] shadow   rounded-xl m-3  w-40 h-57 `,
+        tw`bg-[#e9f7ef] shadow   rounded-xl m-3  w-40 h-57 mb-10 `,
         {
           opacity: fadeAnim,
           transform: [{ translateY }],
@@ -63,8 +65,13 @@ export const CardHome = ({ item, index, scrollX }) => {
             {" "}
             {item.price}€{" "}
           </Text>
-          <TouchableOpacity style={[tw`bg-[#2b6]`, styles.btn]}>
-            <Icon name="add-outline" style={tw`p-3 text-white font-bold `} />
+          <TouchableOpacity style={[tw`bg-[#2b6]`, styles.btn]} onPress={()=> {
+            addCart(item)
+            setIsClicked(false)
+          }}>
+            {
+              isClicked ? <Icon name="add-outline" style={tw`p-3 text-white font-bold `} />:<Icon  name="checkmark-circle" style={tw`p-2 text-[#fff]`}  />
+            }
           </TouchableOpacity>
         </View>
       </Pressable>

@@ -64,7 +64,7 @@ export default CartScreen
 
 const styles = StyleSheet.create({
     container:{
-      backgroundColor:"#f4f5f7",
+      backgroundColor:"#e9f7ef",
       borderTopRightRadius:35,
       borderTopLeftRadius:35,
     },

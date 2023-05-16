@@ -48,7 +48,7 @@ export default Articles
 const styles = StyleSheet.create({
     container:{
         borderTopRightRadius:35,
-        backgroundColor:"#f4f5f7",
+        backgroundColor:"#e9f7ef",
         borderTopLeftRadius:35,
     },
     btn:{

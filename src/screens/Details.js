@@ -99,20 +99,20 @@ const animation = useRef(null);
 
 
   return (
-    <View style={tw`flex-1 bg-white`}>
+    <View style={tw`flex-1 bg-[#e9f7ef]`}>
         <TouchableOpacity style={tw`m-4`} onPress={()=>navigation.goBack()}>
             <Icon name="md-chevron-back-outline" style={tw`ml-1`} size={35} color={"#000"} />
         </TouchableOpacity>
-      <View style={tw` ${Platform.OS ==="web" && "m-10 justify-center items-center self-center"}`}>
+      <View style={tw` ${Platform.OS ==="web" && " mb-10 justify-center items-center self-center bg-[#e9f7ef]"}`}>
           <Image
               source={item.image}
               style={tw`absolute top-[-18] w-80 h-85 mt-3 `}
               resizeMode="contain"
           />
       </View>
-      <View style={[tw`bg-[#eee] flex-1 mt-50`, styles.container]}>
+      <View style={[tw` flex-1 mt-50`, styles.container]}>
         <ScrollView>
-        <View style={tw`bg-white m-4 rounded-2xl items-center`}>
+        <View style={tw`bg-white m-4 rounded-2xl items-center ${Platform.OS ==="web" && "w-86 self-center"}`}>
           <View style={tw`self-center`}>
             <Text style={tw`text-xl ml-2 font-bold m-1`}> {item.name} </Text>
             <Text style={tw`text-sm ml-2 opacity-60`}>
@@ -142,7 +142,7 @@ const animation = useRef(null);
             </TouchableOpacity>
           </View>
         </View>
-        <View style={tw`bg-white m-4 rounded-2xl items-center h-67`}>
+        <View style={tw` m-4 rounded-2xl items-center h-67`}>
           <View style={tw`flex-row justify-between`}>
             <TouchableOpacity
               style={tw`mr-20`}
@@ -162,7 +162,10 @@ const animation = useRef(null);
           </View>
           <View style={tw`bg-[#2b6] rounded-xl h-55 items-center justify-center`}>
             {isDetail === "Detail" ? (
-              <Text style={tw`text-[5] text-white p-2`}> {item.descript} </Text>
+              <View style={tw`w-96`}>
+                  <Text style={tw`text-2xl ml-3`}>Description</Text>
+                  <Text style={tw`text-[5] text-white p-2`}> {item.descript} </Text>
+              </View>
             ) : (
               <>
                 <View style={tw`w-90 flex-row items-center`}>
@@ -230,7 +233,7 @@ const animation = useRef(null);
         </View>
         <View>
         </View>
-         <View style={tw`mb-5`}>
+         <View style={tw`mb-5 bg-white`}>
          <Text style={tw`text-xl font-bold`}>Produits similaires</Text>
          <FlatList
             horizontal
@@ -241,7 +244,7 @@ const animation = useRef(null);
         />
          </View>
         </ScrollView>
-      <View style={[tw`bg-[#fff] h-22 flex-row justify-between items-center `,styles.cart]}>
+      <View style={[tw`bg-[#e9f7ef] h-22 flex-row justify-between items-center `,styles.cart]}>
       <Text style={tw`text-xl font-bold items-end ml-3`}> {item.price}€ </Text>
       
          {
@@ -290,7 +293,7 @@ export default Details;
 const styles = StyleSheet.create({
   container: {
     borderTopRightRadius: 40,
-    backgroundColor: "#f4f5f7",
+    backgroundColor: "#e9f7ef",
     borderTopLeftRadius: 40,
   },
   divider: {

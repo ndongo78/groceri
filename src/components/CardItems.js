@@ -67,12 +67,17 @@ export const CardItems = ({item,index,scrollX}) => {
           {
                 isClicked ?
                     (
-                        <LottieView
-                            loop={false}
-                            ref={animation}
-                            source={require('../../assets/json.json')}
-                            style={[styles.btn,tw`self-end items-end ml-15`]}
-                        />
+                       <>
+                           {
+                               Platform.OS ==="web" ? <Icon  name="checkmark-circle" style={tw`p-2 text-[#2b6]`} size={30} />
+                                   : <LottieView
+                                       loop={false}
+                                       ref={animation}
+                                       source={require('../../assets/json.json')}
+                                       style={[styles.btn,tw`self-end items-end ml-15`]}
+                                   />
+                           }
+                       </>
                     )
                     :
                     (

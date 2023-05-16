@@ -1,4 +1,4 @@
-import { StyleSheet, Text, Animated,View ,TouchableOpacity,Image, Alert} from 'react-native'
+import {StyleSheet, Text, Animated, View, TouchableOpacity, Image, Alert, Platform} from 'react-native'
 import React, { useContext ,useRef,useEffect,useState} from 'react'
 import tw from 'twrnc';
 import Icon from "react-native-vector-icons/Ionicons"
@@ -36,7 +36,7 @@ export const CartCard = ({item,index,scrollX}) => {
   return (
     <Animated.View 
     style={[
-        tw`bg-[#fff] shadow   rounded-xl m-3  w-[90%] `,
+        tw`bg-[#e9f7ef] shadow   rounded-xl m-3  w-[90%] ${Platform.OS ==="web" && "ml-16 mt-4"}`,
         {
           opacity: fadeAnim,
           transform: [{ scale }],
@@ -46,7 +46,7 @@ export const CartCard = ({item,index,scrollX}) => {
      
       <View style={tw`p-3`}>
       <View style={tw`self-end  absolute right-2`}>
-      <TouchableOpacity onPress={()=>deleteItem(item)}>
+      <TouchableOpacity onPress={()=>deleteItem(item)} style={tw`mr-6`}>
       <Icon  name="md-trash-outline" size={25} style={tw`text-red-600`} />
       </TouchableOpacity>
      </View>
@@ -59,7 +59,7 @@ export const CartCard = ({item,index,scrollX}) => {
           <Text style={[tw`mt-1  text-xl font-bold`,{color:"#2b6"}]}> {item.price} €</Text>
           </View>
          </View>
-         <View style={tw`items-end mt-10 items-center`}>
+         <View style={tw`items-end mt-10 items-center mr-5`}>
            <TouchableOpacity onPress={()=>addQty(item)}>
             <Icon name="add-outline" size={25} />
            </TouchableOpacity>

@@ -105,7 +105,7 @@ export default HomeScreen;
 const styles = StyleSheet.create({
     container:{
         borderTopRightRadius:40,
-        backgroundColor:"#f4f5f7",
+        backgroundColor:"#e9f7ef",
         borderTopLeftRadius:40,
     }
 })
